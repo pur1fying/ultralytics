@@ -4,6 +4,16 @@ This file provides guidance to AI coding agents (Claude Code, etc.) when working
 
 Ultralytics (`ultralytics` on PyPI, AGPL-3.0) is the official Python package for YOLO-family vision models — detection, instance and semantic segmentation, classification, pose, oriented boxes, and tracking — plus training, validation, benchmarking, export to 20 deployment formats, and the `yolo` CLI. Supported floors are Python>=3.8 with PyTorch>=1.8.
 
+## BAAS Workspace Boundary (CRITICAL)
+
+The canonical workspace for every BAAS-specific change is the repository-root `BAAS/` directory. The spelling and capitalization are fixed: `BAAS`.
+
+- Put all agent-authored BAAS source code, configuration, scripts, tests, documentation, training and evaluation tooling, export and quantization tooling, benchmarks, and release tooling under `BAAS/`.
+- Do not add or modify BAAS-specific behavior in upstream-owned paths, including `ultralytics/`, `tests/`, root-level scripts or configuration, or any directory outside `BAAS/`.
+- BAAS-specific files that already exist outside `BAAS/` are legacy inputs only. Do not continue editing them in place. Relocate them only when the user explicitly requests that migration.
+- The only standing exception is this root `AGENTS.md`, which may be updated to maintain the workspace policy. Any other change outside `BAAS/` requires the user's explicit authorization for the exact target and task; stop and ask rather than inferring permission.
+- Routine upstream synchronization may update upstream-owned files, but never mix BAAS-specific behavior into an upstream sync.
+
 ## Core Principles (CRITICAL)
 
 **Less is more. The simplest solution is the best solution.** The action hierarchy for every change: **Delete > Replace > Add**.
